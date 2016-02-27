@@ -1,14 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 import os
 
 virtenv = os.environ['OPENSHIFT_PYTHON_DIR'] + '/virtenv/venv/'
 virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
 try:
-    with open(virtualenv, 'rb') as exec_file:
-		file_contents = exec_file.read()
-	compiled_code = compile(file_contents, virtualenv, 'exec')
-	exec_namespace = dict(__file__=virtualenv)
-	exec(compiled_code, exec_namespace)
+    execfile(virtualenv, dict(__file__=virtualenv))
 except IOError:
     pass
 #
@@ -169,7 +165,7 @@ hgroup {
 }
 footer {
     margin: 50px 0 25px;
-    font-size: 11px;
+    font-size: 11px
 }
 h1, h2, h3 {
   color: #000;
@@ -285,7 +281,6 @@ $ git push</pre>
                     <li><a href="http://git-scm.com/documentation">Git documentation</a></li>
                   </ul>
 
-
           </section>
         </div>
 
@@ -295,13 +290,12 @@ $ git push</pre>
 </section>
 </body>
 </html>'''
-    response_body = response_body.encode('utf-8')
 
     status = '200 OK'
     response_headers = [('Content-Type', ctype), ('Content-Length', str(len(response_body)))]
     #
     start_response(status, response_headers)
-    return [response_body ]
+    return [response_body]
 
 #
 # Below for testing only
