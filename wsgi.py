@@ -4,7 +4,7 @@ import os
 virtenv = os.environ['OPENSHIFT_PYTHON_DIR'] + '/virtenv/venv/'
 virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
 try:
-    exec(compile(open(filename, "rb").read(), filename, 'exec'), globals, locals)
+    exec(compile(open(virtualenv, "rb").read(), virtualenv, 'exec'), dict(__file__=virtualenv))
 except IOError:
     pass
 #
