@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block menu_contact %}
+    <li class="active"><a href="/contact">CONTACT</a></li> {% endblock %}
+{% block content %}
+    <div class="contact-content">
+        <div class="container">
+            <div class="contact-info">
+                <h2>CONTACT</h2>
+                <p>如果又有什么疑问，不妨留言给我，共同讨论，说不定你我正是同道中人。</p>
+            </div>
+            <div class="contact-details">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% for field in contact_form %}
+                        {{ field.errors }}
+                        {{ field }}
+                    {% endfor %}
+
+                    <input type="submit" value="SEND"/>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

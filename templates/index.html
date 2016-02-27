@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block menu_home %}
+    <li class="active"><a href="/index">HOME</a></li> {% endblock %}
+{% block content_main %}
+
+    <div class="col-md-8 content-main">
+        <div class="content-grid">
+
+            {% for art in articles_list %}
+                <div class="content-grid-info">
+                {% load myfilter %}
+                    <img src="{{ art.content|img_links_from_article }}" alt=""/>
+                    <div class="post-info">
+                        <h4>
+                            <a href="/article/{{ art.id }}">{{ art.title }}</a>
+                            {{ art.publish_datetime }}&nbsp;&nbsp;&nbsp;&nbsp;<span class="ds-thread-count comments-count-home" data-thread-key="nicoblog-{{ art.id }}"></span>&nbsp;Comments/{{ art.views_count }}&nbsp;Views
+                        </h4>
+                        <p>{{ art.summary }}...</p>
+                        <a href="/article/{{ art.id }}"><span></span>READ MORE</a>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="content-grid-info">
+                    <img src="/static/images/post1.jpg" alt=""/>
+                    <div class="post-info">
+                        <h4>Opps.. &nbsp;&nbsp; No passage</h4>
+                        <p>Blogger have didn't write anything.</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+        {% include 'pagination.html' %}
+	<div class="clearfix"></div>
+    </div>
+
+{% endblock %}
+

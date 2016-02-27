@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block custom_css %}
+    <link href="/static/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block custom_js %}
+    <script type="text/javascript" src="/static/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+{% endblock %}
+{% block content_main %}
+    {#多说分享条#}
+    <div class="ds-share flat" data-thread-key="nicoblog-{{ art.id }}" data-title="{{ art.title }}"
+         data-images="" data-content="{{ art.summary }}" data-url="www.nicozhang.cn{{ request.path }}">
+        <div class="ds-share-aside-left">
+            <div class="ds-share-aside-inner">
+            </div>
+            <div class="ds-share-aside-toggle">分享到</div>
+        </div>
+    </div>
+    <div class="col-md-8 single-main">
+        <div class="single-grid">
+            <h3>{{ art.title|title }}</h3>
+            <div class="entry-meta">
+                <span class="post-category"><a href="{% url 'category' cid=art.category_id %}">{{ art.category }}</a></span>
+                <span class="post-date"><a>{{ art.publish_datetime }}</a></span>
+                <span class="post-author"><a href="{% url 'index' %}">{{ SITE_OWNER }}</a></span>
+                <span><a><span class="ds-thread-count comments-count-single" data-thread-key="nicoblog-{{ art.id }}"></span>&nbsp;Comments/{{ art.views_count }}&nbsp;Views</a></span>
+            </div>
+            {{ art.content|safe }}
+            <div class="clearfix"></div>
+        </div>
+        {#自定义的评论表单#}
+        {#        <div class="content-form">#}
+        {#            <h3>Leave a comment</h3>#}
+        {#            <form action="" method="post">#}
+        {#                {% csrf_token %}#}
+        {#                {% for field in comment_form %}#}
+        {#                    {{ field.errors }}#}
+        {#                    {{ field }}#}
+        {#                {% endfor %}#}
+        {#                <input type="submit" value="SEND"/>#}
+        {#            </form>#}
+        {#        </div>#}
+
+        {#多说评论框#}
+        <div id="comments">
+            <div class="ds-thread" data-thread-key="nicoblog-{{ art.id }}" data-title="{{ art.title }}"
+                 data-url="www.nicozhang.xyz{{ request.path }}"></div>
+        </div>
+    </div>
+{% endblock %}

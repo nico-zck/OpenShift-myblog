@@ -1,0 +1,28 @@
+<ul class="pagination pagination-right">
+    {% if articles_list.has_previous %}
+        <li>
+            <a href="?page=1">&laquo;</a>
+        </li>
+    {% else %}
+        <li class="disabled"><a href="?page=#">&laquo;</a></li>
+    {% endif %}
+
+    {% for i in articles_list.paginator.page_range %}
+        {% if i == articles_list.number %}
+            <li class="active">
+                <a href="?page={{ i }}">{{ i }}</a>
+            </li>
+        {% else %}
+            <li>
+                <a href="?page={{ i }}">{{ i }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+
+    {% if articles_list.has_next %}
+        <li><a href="?page={{ articles_list.paginator.num_pages }}">&raquo;</a>
+        </li>
+    {% else %}
+        <li class="disabled"><a href="#">&raquo;</a></li>
+    {% endif %}
+</ul>

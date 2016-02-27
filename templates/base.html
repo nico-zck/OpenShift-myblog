@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>{{ SITE_NAME }}</title>
+    <link rel="shortcut icon" href="/static/NZlogo.ico"/>
+    <link rel="bookmark" href="/static/NZlogo.ico"/>
+    <link href="/static/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href="/static/css/style.css" rel='stylesheet' type='text/css'/>
+    {% block custom_css %}
+    {% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords"
+          content="Personal Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates."/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!----webfonts---->
+    <link href='http://fonts.useso.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900,300italic' rel='stylesheet'
+          type='text/css'>
+    <!----//webfonts---->
+    <script src="http://ajax.useso.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!--end slider -->
+    <!--script-->
+    <script type="text/javascript" src="/static/css/move-top.js"></script>
+    <script type="text/javascript" src="/static/css/easing.js"></script>
+    {#多说公共JS代码(一个网页只需插入一次)#}
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name: "nicoz"};
+        (function () {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    {% block custom_js %}
+    {% endblock %}
+    <!--/script-->
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 900);
+            });
+        });
+    </script>
+    <!---->
+
+</head>
+<body>
+<!---header---->
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="/"><img src="/static/images/logo.jpg" title=""/></a>
+        </div>
+        <!---start-top-nav---->
+        <div class="top-menu">
+            <div class="search">
+                <form>
+                    <input type="text" placeholder="" required="">
+                    <input type="submit" value=""/>
+                </form>
+            </div>
+            <span class="menu"> </span>
+            <ul>
+                {% block menu_home %}
+                    <li><a href="/index">HOME</a></li> {% endblock %}
+                {% block menu_about %}
+                    <li><a href="/about">ABOUT</a></li> {% endblock %}
+                {% block menu_contact %}
+                    <li><a href="/contact">CONTACT</a></li> {% endblock %}
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+        <script>
+            $("span.menu").click(function () {
+                $(".top-menu ul").slideToggle("slow", function () {
+                });
+            });
+        </script>
+        <!---//End-top-nav---->
+    </div>
+</div>
+<!--/header-->
+{% block content %}
+    <div class="content">
+        <div class="container">
+            <div class="content-grids">
+                {% block content_main %}
+
+                {% endblock %}
+                <div class="col-md-4 content-right">
+                    <div class="comments">
+                        <h3>RECENT COMMENTS</h3>
+                        <div class="comments">
+                            {#多说最新评论#}
+                            <div class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1"
+                                 data-show-title="1" data-show-admin="1" data-excerpt-length="30"></div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="archives">
+                        <h3>ARCHIVES</h3>
+                        <ul>
+                            {% for archive in archive_list %}
+                                <li>
+                                    <a href="{% url 'archive' year=archive|slice:'3:7' month=archive|slice:'0:2' %}">{{ archive }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="categories">
+                        <h3>CATEGORIES</h3>
+                        <ul>
+
+                            {% for category in categories_list %}
+                                <li><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<!---->
+<div class="footer">
+    <div class="container">
+        <p>Copyrights © 2016 Nico All rights reserved | Powered by <a href="https://www.djangoproject.com/">Django</a>
+        </p>
+    </div>
+    <div style="display: none">
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257421267'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1257421267%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+</div>
+
+
+	
