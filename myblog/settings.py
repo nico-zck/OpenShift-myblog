@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'DjangoUeditor',
     'blog',
-    'gunicorn',
 ]
 
 MIDDLEWARE_CLASSES = [
