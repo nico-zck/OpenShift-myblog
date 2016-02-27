@@ -14,7 +14,7 @@ setup(
     url='http://www.nicozhang.xyz/',
 	
     install_requires=[
-        'Django==1.8.4',
+        'Django>=1.8',
 		'DjangoUeditor==1.8.143'
 	],
 	dependency_links=[
