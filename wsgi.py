@@ -7,4 +7,4 @@ try:
 except IOError:
     pass
 
-from yourdjproject.wsgi import application
+from myblog.wsgi import application
