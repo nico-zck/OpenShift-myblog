@@ -1,0 +1,2 @@
+openshift find static files at this folder, 
+so put you static folder there and set your STATIC_ROOT in settings.py link this folder.
